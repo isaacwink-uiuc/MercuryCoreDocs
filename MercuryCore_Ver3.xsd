@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+    targetNamespace="MercuryCore"
+    xmlns="http://mercurycore.edu/elements"
+    xmlns:dc="http://purl.org/dc/terms/"
+    xmlns:pbcore="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
+    
+    <xs:import namespace="http://purl.org/dc/terms/" schemaLocation="https://www.dublincore.org/schemas/xmls/qdc/2008/02/11/dcterms.xsd"/>
+    <xs:import namespace="http://www.pbcore.org/PBCore/PBCoreNamespace.html" schemaLocation="https://raw.githubusercontent.com/WGBH/PBCore_2.1/master/pbcore-2.1.xsd"/>
+    
+    <!-- BROADCAST (root) -->
+    <xs:element name="MercuryCore">
+        <xs:complexType>
+            <xs:sequence>
+                
+            <!-- TITLE, IDENTIFIER, DESCRIPTION -->
+            <xs:element ref="pbcore:pbcoreDescriptionDocument" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>
+                        "Title" describes the name or label relevant to the asset.
+                        "Identifier" lists the unique identifier affixed to the asset. 
+                        "Description" describes an account of the asset.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            
+            <!-- REHEARSAL -->
+            <xs:element name="rehearsal" minOccurs="1" maxOccurs="1">
+                <xs:simpleType>
+                    <xs:annotation>
+                        <xs:documentation>
+                            Identifies using a binary Yes/No value if the broadcast is a rehearsal. 
+                        </xs:documentation>
+                    </xs:annotation>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="Yes"/>
+                            <xs:enumeration value="No"/>
+                        </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            
+            <!-- ADAPTATION WRAPPER -->
+            <xs:element name="adaptationWrapper" minOccurs="0" maxOccurs="1"> 
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="isAdapted" minOccurs="0" maxOccurs="1" type="xs:string">
+                            <xs:annotation>
+                                <xs:documentation>
+                                    Identifies using a binary Yes/No value if the broadcast is adapted from another intellectual work.
+                                </xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                        <xs:element name="adaptedFrom" minOccurs="0" maxOccurs="1" type="xs:string">
+                            <xs:annotation>
+                                <xs:documentation>
+                                    Identifies the intellectual entity from which the broadcast's intellectual content is derived. 
+                                </xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                        <xs:element name="adaptedFromMedia" minOccurs="0" maxOccurs="1" type="xs:string">
+                            <xs:annotation>
+                                <xs:documentation>
+                                    Identifies the media type of the intellectual entity from which the broadcast's intellectual content is derived.
+                                </xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            
+            <!-- SERIES -->
+            <xs:element name="series" minOccurs="0" maxOccurs="1" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>
+                        Identifies the name of the series of broadcasts of which this episode is a part. 
+                        Series refers to a relationship in the intellectual work, such as multiple episodes in an ongoing story.
+                        Element is not utilized if broadcast is considered a stand-alone episode. 
+                    </xs:documentation> 
+                </xs:annotation>
+            </xs:element>
+            
+            <!-- BROADCAST SET -->
+            <xs:element name="broadcastSet" minOccurs="0" maxOccurs="1">
+                <xs:simpleType>
+                    <xs:annotation>
+                        <xs:documentation>
+                            Series name or collection name to which an object belongs, if applicable.
+                        </xs:documentation>
+                    </xs:annotation>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="The Mercury Theatre on the Air"/>
+                            <xs:enumeration value="Campbell Playhouse"/>
+                        </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            
+            <!-- LANGUAGE -->
+            <xs:element ref="dc:language" minOccurs="1" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>
+                        Language of the resource. 
+                        As all described assets are audio recordings, language will describe spoken language of asset.
+                        Refer to https://www.loc.gov/standards/iso639-2/php/code_list.php for language encoding standards (specifically, ISO Standard 639.2). 
+                    </xs:documentation> 
+                </xs:annotation>
+            </xs:element> 
+            
+            <!-- COPYRIGHT -->
+            <xs:element type="pbcore:rightsSummaryType" name="copyright" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>
+                        A general free-text element to identify information about copyrights and property rights 
+                        held in and over an asset or instantiation.  
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element> 
+            
+            <!-- FILE SOURCE -->
+            <xs:element type="pbcore:sourceVersionStringType" name="fileSource" minOccurs="1" maxOccurs="1">
+                 <xs:annotation>
+                     <xs:documentation>
+                         Contain[s] information about a specific location for an instantiation, such as an organization’s name, departmental name, shelf ID and contact information. 
+                         A digital file should include domain, path or URI to the file. 
+                     </xs:documentation>
+                 </xs:annotation>
+            </xs:element> 
+            
+            <!-- BROADCAST DATE -->
+            <xs:element type="pbcore:sourceVersionStartEndStringType" name="broadcastDate" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>
+                        Date of original broadcast. 
+                        Refer to PBCore documentation for date encoding standards. 
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element> 
+            
+            <!-- FILE TYPE -->
+            <xs:element name="fileType" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>
+                        Identif[ies] the format of a particular instantiation of an asset as it exists as a digital file on a server, 
+                        hard drive, or other digital storage medium.
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                     <xs:restriction base="xs:string">
+                        <xs:enumeration value="MP3"/>
+                        <xs:enumeration value="FLAC"/>
+                        <xs:enumeration value="RealAudio"/>
+                        <xs:enumeration value="BitTorrent"/>
+                        <xs:enumeration value="AFPK"/>
+                        <xs:enumeration value="ALAC/M4A"/> 
+                        <xs:enumeration value="Spectrogram"/> 
+                        <xs:enumeration value="WAV"/> 
+                        <xs:enumeration value="Other"/> 
+                    </xs:restriction>
+                </xs:simpleType>
+              </xs:element> 
+            
+            <!-- BROADCAST COMPANY -->
+            <xs:element name="broadcastCompany" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>
+                        Identifies a person, people, or organization primarily responsible for broadcast distribution of asset.
+                    </xs:documentation>
+                </xs:annotation>
+                    <xs:simpleType>
+                         <xs:restriction base="xs:string">
+                             <xs:enumeration value="CBS"/>
+                             <xs:enumeration value="CBC"/>
+                    </xs:restriction>  
+                    </xs:simpleType>
+            </xs:element>
+            
+            <!-- CONTRIBUTOR -->
+            <xs:element name="contributor" minOccurs="1" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>
+                        Identifies a person, people, or organization that has made substantial creative contributions to the asset. 
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:complexType mixed="true">
+                    <xs:attribute name="contributorRole">
+                        <xs:annotation>
+                            <xs:documentation>
+                                Identifies the mode of the contributor's participation in the production (e.g. "Narrator," "Producer," "Actor," etc.).  
+                            </xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                </xs:complexType>
+            </xs:element>
+            
+            <!-- DURATION -->
+            <xs:element type="pbcore:sourceVersionStringType" name="duration" minOccurs="1" maxOccurs="1">
+                 <xs:annotation>
+                     <xs:documentation>
+                         Provides a timestamp for the overall length or duration of a time-based media item. 
+                         Refer to PBCore documentation for time encoding standards.
+                     </xs:documentation>
+                 </xs:annotation>
+            </xs:element>
+            
+            <!-- GENRE -->
+            <xs:element name="genre" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>
+                        Describes the Genre of the asset, which can be defined as a categorical description 
+                        informed by the topical nature or a particular style or form of the content.
+                        Restrictions are supplied from the National Audio-Visual Conservation Center's controlled vocabulary for radio broadcast genres. 
+                    </xs:documentation>
+                </xs:annotation>
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="Addresses"/>
+                            <xs:enumeration value="Adventure"/>
+                            <xs:enumeration value="Advertising"/>
+                            <xs:enumeration value="Announcements"/>
+                            <xs:enumeration value="Anthologies"/>
+                            <xs:enumeration value="Audience Participation Programs"/>
+                            <xs:enumeration value="Auditions"/>
+                            <xs:enumeration value="Biographies"/>
+                            <xs:enumeration value="Call-In Shows"/>
+                            <xs:enumeration value="Children Programmes"/>
+                            <xs:enumeration value="Comedies"/>
+                            <xs:enumeration value="Commentary"/>
+                            <xs:enumeration value="Community Affairs"/>
+                            <xs:enumeration value="Crime or Mystery Programs"/>
+                            <xs:enumeration value="Criticism"/>
+                            <xs:enumeration value="Debates"/>
+                            <xs:enumeration value="Disc Jockey Programs"/>
+                            <xs:enumeration value="Documentaries"/>
+                            <xs:enumeration value="Dramas"/>
+                            <xs:enumeration value="Educational Programs"/>
+                            <xs:enumeration value="Ethnic Programs"/>
+                            <xs:enumeration value="Fantasy"/>
+                            <xs:enumeration value="Field Reports"/>
+                            <xs:enumeration value="Gossip"/>
+                            <xs:enumeration value="Historical Dramas"/>
+                            <xs:enumeration value="Histories"/>
+                            <xs:enumeration value="Horror"/>
+                            <xs:enumeration value="Informational Programs"/>
+                            <xs:enumeration value="Instructional Programs"/>
+                            <xs:enumeration value="Literary Readings"/>
+                            <xs:enumeration value="Magazines"/>
+                            <xs:enumeration value="Medical Dramas"/>
+                            <xs:enumeration value="News"/>
+                            <xs:enumeration value="News Bulletins"/>
+                            <xs:enumeration value="Outtakes"/>
+                            <xs:enumeration value="Panel Discussions"/>
+                            <xs:enumeration value="Press Conferences"/>
+                            <xs:enumeration value="Propaganda"/>
+                            <xs:enumeration value="Public Affairs"/>
+                            <xs:enumeration value="Public Service"/>
+                            <xs:enumeration value="Public Service Announcements"/>
+                            <xs:enumeration value="Quiz Shows"/>
+                            <xs:enumeration value="Religious Programs"/>
+                            <xs:enumeration value="Science Programs"/>
+                            <xs:enumeration value="Science Fiction"/>
+                            <xs:enumeration value="Soap Operas"/>
+                            <xs:enumeration value="Special Events Coverage"/>
+                            <xs:enumeration value="Specials"/>
+                            <xs:enumeration value="Sports News and Commentary"/>
+                            <xs:enumeration value="Sports Events Coverage"/>
+                            <xs:enumeration value="Talent Shows"/>
+                            <xs:enumeration value="Talk Shows"/>
+                            <xs:enumeration value="Telescoped Airchecks"/>
+                            <xs:enumeration value="Travelogues"/>
+                            <xs:enumeration value="Variety"/>
+                            <xs:enumeration value="Vox Pop"/>
+                            <xs:enumeration value="War Dramas"/>
+                            <xs:enumeration value="Western Art Music"/>
+                            <xs:enumeration value="Westerns"/>
+                        </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+                
+        </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

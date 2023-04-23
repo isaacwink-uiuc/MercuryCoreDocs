@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MercuryCore xmlns="MercuryCore"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="MercuryCore MercuryCore_Ver3.xsd">
+    <pbcoreDescriptionDocument xmlns="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
+        <pbcoreIdentifier source="Mercury Theatre website" ref="http://sounds.mercurytheatre.info/mercury/381030.mp3">381030</pbcoreIdentifier>
+        <pbcoreTitle>The War of the Worlds</pbcoreTitle>
+        <pbcoreDescription>Recording of the radio drama "The War of the Worlds", narrated by Orson Welles, and broadcast in 1938 by CBS as part of the series "The Mercury Theatre on the Air"</pbcoreDescription>
+    </pbcoreDescriptionDocument>
+    <rehearsal>No</rehearsal>
+    <adaptationWrapper>
+        <isAdapted>Yes</isAdapted>
+        <adaptedFrom>The War of the Worlds</adaptedFrom>
+        <adaptedFromMedia>Novel</adaptedFromMedia>
+    </adaptationWrapper>
+    <broadcastSet>The Mercury Theatre on the Air</broadcastSet>
+    <language xmlns="http://purl.org/dc/terms/">English</language>
+    <copyright>
+        <rightsSummary xmlns="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
+            Rights are owned by the widow of script author Howard Koch, and are administered by Norman Rudman, in California
+        </rightsSummary>
+    </copyright>
+    <fileSource>http://sounds.mercurytheatre.info/mercury/381030.mp3</fileSource>
+    <broadcastDate>1938-10-30</broadcastDate>
+    <fileType>MP3</fileType>
+    <broadcastCompany>CBS</broadcastCompany>
+    <contributor contributorRole="Narrator">Orson Welles</contributor>
+    <duration>00:59:19</duration>
+    <genre>Science Fiction</genre>
+</MercuryCore>

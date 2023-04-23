@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MercuryCore xmlns="MercuryCore"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="MercuryCore MercuryCore_Ver3.xsd">
+    <pbcoreDescriptionDocument xmlns="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
+        <pbcoreIdentifier source="http://sounds.mercurytheatre.info/mercury/380801r.mp3">380801</pbcoreIdentifier>
+        <pbcoreTitle>The 39 Steps</pbcoreTitle>
+        <pbcoreDescription>Recording of a rehearsal of "The 39 Steps" broadcast on August 1, 1938</pbcoreDescription>
+    </pbcoreDescriptionDocument>
+    <rehearsal>Yes</rehearsal>
+    <adaptationWrapper>
+        <isAdapted>Yes</isAdapted>
+        <adaptedFrom>The Thirty-Nine Steops</adaptedFrom>
+        <adaptedFromMedia>Novel</adaptedFromMedia>
+    </adaptationWrapper>
+    <broadcastSet>The Mercury Theatre on the Air</broadcastSet>
+    <language xmlns="http://purl.org/dc/terms/">eng</language>
+    <copyright>
+        <rightsSummary xmlns="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
+            Copyright status of this broadcast is unclear/contested.
+        </rightsSummary>
+    </copyright>
+    <fileSource>http://sounds.mercurytheatre.info/mercury/380801r.mp3</fileSource>
+    <broadcastDate>1938-08-01</broadcastDate>
+    <fileType>MP3</fileType>
+    <broadcastCompany>CBC</broadcastCompany>
+    <contributor contributorRole="Voice Actor">Orson Welles</contributor>
+    <duration>01:08:03</duration>
+    <genre>Adventure</genre>
+</MercuryCore>
